@@ -1,0 +1,5 @@
+*.fasta
+*.txt
+*.aln
+*.zip
+**/plotcon.1.png
