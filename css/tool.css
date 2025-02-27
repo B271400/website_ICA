@@ -1,0 +1,116 @@
+/* this file save the font and sprite figure settings */
+
+/* font */
+/* title: gangalin */
+@font-face {
+    font-family: 'Gangalin';
+    src: url('/~s2647596/fonts/Gagalin-Regular.otf') format('opentype');
+}
+.gangalin-font{
+    font-family:'Gangalin', Arial, sans-serif;
+}
+.gangalin-title{
+    font-family:'Gangalin', Arial, sans-serif;
+    color:var(--dark-purple)
+}
+/* normal fonts: more sugar */
+@font-face {
+    font-family: 'MoreSugar';
+    src: url('/~s2647596/fonts/MoreSugar-Regular.otf') format('opentype');
+}
+.more-sugar-font{
+    font-family:'MoreSugar',Arial, sans-serif;
+}
+
+/* use CSS sprite to load small pictures */
+/* positions were obtained from spitecow.com */
+/* left/middle/right is the position of this icon on the figure */
+.sprite-left1 {
+    background: url('../imgs/Figures.png') no-repeat 0 0;
+    width: 396px;
+    height: 57px;
+    color:var(--violat);
+    text-align:center;
+    line-height:50px;
+}
+.sprite-left2{
+    background: url('../imgs/Figures.png') no-repeat -2px -102px;
+    width: 395px;
+    height: 57px;
+    color:var(--light-pink) !important;
+    text-align:center;
+    line-height:50px;
+}
+
+.sprite-left3{
+    background: url('../imgs/Figures.png') no-repeat -2px -204px;
+    width: 250px;
+    height: 62px;
+}
+.sprite-left4{
+    background: url('../imgs/Figures.png') no-repeat -10px -310px;
+    width: 297px;
+    height: 111px;
+}
+.sprite-left5{
+    background: url('../imgs/Figures.png') no-repeat -32px -466px;
+    width: 196px;
+    height: 81px;
+}
+
+.sprite-left6{
+    background: url('../imgs/Figures.png') no-repeat -33px -592px;
+    width: 331px;
+    height: 373px;
+}
+.sprite-middle1{
+    background: url('../imgs/Figures.png') no-repeat -532px -57px;
+    width: 480px;
+    height: 436px;
+}
+
+.sprite-middle2{
+    background: url('../imgs/Figures.png') no-repeat -502px -650px;
+    width: 159px;
+    height: 109px;
+}
+
+.sprite-middle3{
+    background: url('../imgs/Figures.png') no-repeat -806px -664px;
+    width: 108px;
+    height: 85px;
+}
+.sprite-right1 {
+    background: url('../imgs/Figures.png') no-repeat -1237px -36px;
+    width: 264px;
+    height: 275px;
+}
+.sprite-right2 {
+    background: url('../imgs/Figures.png') no-repeat -1257px -423px;
+    width: 223px;
+    height: 218px;
+}
+.sprite-right3 {
+    background: url('../imgs/Figures.png') no-repeat -1224px -699px;
+    width: 290px;
+    height: 266px;
+}
+
+
+/* unicode icofont */
+@font-face {
+    font-family: "iconfont"; /* Project id  */
+    src: url('../fonts/iconfont.ttf') format('truetype');
+  }
+  
+.iconfont {
+font-family: "iconfont" !important;
+font-size: 16px;
+font-style: normal;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuo:before {
+content: "\e61c";
+}

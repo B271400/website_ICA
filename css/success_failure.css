@@ -1,0 +1,81 @@
+/* the failure page */
+.failed-pic{
+    position:absolute;
+    top:0;
+    transform:scale(0.7)
+}
+.failed-word-box{
+    color:var(--violat);
+    position:absolute;
+    font-size:1.5vw;
+    top:8vh;
+    left: 20vw;
+}
+
+
+/* success page */
+.success-pic{
+    position:absolute;
+    top:10vh;
+    left:20vw;
+    transform:scale(0.9)
+}
+.success-msg{
+    font-size:2.3vw;
+    color:var(--violat);
+    position:absolute;
+    top:-20px;
+    left:38vw;
+}
+.success-choice-list{
+    position:absolute;
+    left:38vw;
+    top: 25vh;
+    width:40vw;
+    height:10vh;
+}
+/* success choice buttons */
+.success-choice-list li{
+    width:15vw;
+    height:10vh;
+    float:left;
+    margin-right:5vw;
+    position:relative;
+}
+
+@keyframes sideMove {
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+    100%{
+        transform:scale(1)
+    }
+}
+.success-choice-list li:hover{
+    animation:sideMove 0.5s linear infinite alternate;
+}
+.success-choice-list li img{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.success-choice-list li a{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    text-align:center;
+    padding-top:1.8vh;
+    font-size:1.1vw;
+    color:var(--dark-purple);
+    box-sizing: border-box;
+}
+.success-choice-list li:last-child a{
+    padding-top:3.5vh;
+}

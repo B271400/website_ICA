@@ -1,0 +1,25 @@
+/* banner and return to home page button */
+/* banner */
+.banner{
+    width:100vw;
+    height:20vh;
+    background-image:url(../imgs/banner.png);
+    background-size:cover;
+    position:relative;
+}
+.banner h2{
+    font-size:7vw;
+    color:var(--violat);
+    opacity:0.95;
+    position:absolute;
+    right:12vw;
+    top:2vh;
+}
+
+/* return home button */
+.return-home{
+    position:fixed;
+    bottom:-10px;
+    right:5vw;
+    transform:scale(0.8) !important;
+}

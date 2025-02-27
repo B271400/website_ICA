@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME page</title>
+    <!-- the animation css -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="./css/base.css"/>
+    <link rel="stylesheet" href="./css/tool.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
+</head>
+<body>
+    <!-- the navbar -->
+    <nav class="navbar animate__animated animate__slideInDown">
+        <ul class="nav-list more-sugar-font">
+            <li><a href="#website-introduction">Home</a></li>
+            <li><a href="/~s2647596/search.html">search</a></li>
+            <li><a href="/~s2647596/analysis.html">Analysis</a></li>
+            <li><a href="/~s2647596/history.html">History</a></li>
+            <li><a href="#footer">Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- the main body of home page -->
+    <article class="scroller">
+        <!-- introduction part -->
+        <section class="website-introduction" id="website-introduction">
+            <div class="gangalin-title animate__animated animate__slideInRight"><p>SEQUENCE</p><p>ANALYSIS TOOL</p></div>
+            <div class="content-box more-sugar-font animate__animated animate__slideInLeft">
+                <img src="./imgs/word_box2.png" />
+                <p>
+                    welcome to this website! It allows you to retrieve protein sequences from a user-defined taxonomic group, 
+                    analyze their conservation levels, investigate protein properties
+                    and identify motifs using PROSITE. Start by querying your protein of interest!
+                </p>
+            </div>
+        </section>
+
+        <!-- detailed introduction of this website's function -->
+        <section class="function-introduction" id="function-introduction">
+            <ul>
+                <li class="more-sugar-font">
+                    <img src="./imgs/pic1.png"/>
+                     <!-- <video src="./videos/search.mp4" autoplay muted loop></video> -->
+                    <h4 >Search</h4>
+                    <p>enter the protein name and species name to obtain target seqeunce</p>
+                    <a href="/~s2647596/search.html">Try it now</a>
+                </li>
+                <li class="more-sugar-font">
+                    <img src="./imgs/pic2.png"/>
+                    <h4 >Analysis</h4>
+                    <p>enter the protein name and species name to obtain target seqeunce</p>
+                    <a href="/~s2647596/analysis.html">Try it now</a>
+                </li>
+                <li class="more-sugar-font">
+                    <img src="./imgs/pic3.png"/>
+                    <h4 >History</h4>
+                    <p>enter the protein name and species name to obtain target seqeunce</p>
+                    <a href="/~s2647596/history.html">Try it now</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- show example data -->
+        <section class="example-display" id="example-display">
+            <!-- left part -->
+            <div class="left-part">
+                <h2 class="gangalin-font">TRY EXAMPLE DATA</h2>
+                <div class="more-sugar-font"><p>this is prime space! use it to elaborate on your attention-grabbing section.
+                    explain what this section is about, share some detailes, 
+                    and give just the right amount of information to get the audience hooked. 
+                    Don't give everything away, though!
+                    After all, you want them to click on your call-to-action after reading this.
+                </p></div>
+                <a href="#" class="more-sugar-font">view</a>
+            </div>
+            <!-- right part -->
+            <div class="right-part">
+                <img src="./imgs/bird.png"/>
+            </div>
+        </section>
+
+        <!-- the footer part -->
+        <section class="footer" id="footer" >
+            <!-- background -->
+             <div class="background-pic"></div>
+            <!-- left part: the list -->
+             <ul class="gangalin-font left-part" id="footer-ul">
+                <li id="help" class="original_box active_box" >
+                    <img  src="./imgs/active_box.png"/>
+                    <p>HELP</p>
+                </li>
+                <li id="about" class="original_box">
+                    <img  src="./imgs/original_box.png"/>
+                    <p>ABOUT</p>
+                </li>
+                <li id="contact" class="original_box" >
+                    <img  src="./imgs/original_box.png"/>
+                    <p>CONTACT ME</p>
+                </li>
+             </ul>
+             <!-- right part: the content -->
+              <div id="content" class="more-sugar-font right-part">
+                The help part provides a user-firendly guide for biologists onhow to use this website's functionalities. The about part gives an overview of the website's design and implementation, aimed at a web developer audience. It explains the technologies used,the database structure and the logic begind each feature
+              </div>
+         </section>
+    </article>
+
+    <script src="./js/index.js" type="module"></script>
+</body>
+</html>

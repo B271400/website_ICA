@@ -1,0 +1,171 @@
+/* this part for conservation analysis,
+ motif search, property and integrated analysis */
+
+.banner h2.gangalin-font{
+    display:inline-block;
+    width:30vw;
+    text-align:center;
+    height:100%;
+    font-size:4vw;
+    right:5vw;
+    top:0.8vh;
+}
+
+/* content part */
+section.content{
+    position:relative;
+}
+
+/* left buttons */
+.content .left-part{
+    position:absolute;
+    width:20vw;
+    left:10vw;
+    top:10vh;
+}
+.content .left-part li{
+    position:relative;
+    height:15vh;
+    width:20vw;
+    font-size:2vw;
+    margin-bottom:10vh;
+    line-height:15vh;
+    color:var(--dark-purple);
+    line-height: 15vh;
+}
+@keyframes sideMove {
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+    100%{
+        transform:scale(1)
+    }
+}
+.content .left-part li:hover{
+    cursor:pointer;
+    animation:sideMove 0.5s linear infinite alternate;
+}
+.content .left-part li img{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+}
+.content .left-part li>p{
+    position:absolute;
+    display:inline-block;
+    width:100%;
+    height:100%;
+    text-align:center;
+    z-index:999;
+}
+/* upload file button */
+#upload_new {
+    position:relative;
+}
+#upload_new label{
+    width:100%;
+    height:100%;
+    position:absolute;
+    text-align:center;
+    left:0;
+    cursor: pointer;
+}
+#upload_new input{
+    cursor: pointer;
+    opacity:0;
+}
+/* return back button */
+.content .left-part li:last-child {
+    color:var(--light-pink) !important;
+    width:8vw;
+    height:6vh;
+    background-color: var(--violat);
+    border-radius:10px;
+    position:absolute;
+    left:50%;
+    margin-left:-4vw;
+    line-height: 6vh;
+}
+
+.content .left-part li:last-child a{
+    font-size:1.5vw;
+    text-align: center;
+    display:inline-block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+
+}
+
+/* download result button */
+.content .left-part li.zip-download{
+    margin-top:10vh;
+}
+.content .left-part li.zip-download img{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+.content .left-part li.zip-download a{
+    position:absolute;
+    z-index:999;
+    display:inline-block;
+    width:100%;
+    height:100%;
+    text-align:center;
+}
+
+/* right picture and descriptions */
+.content .right-part{
+    position:absolute;
+    top:5vh;
+    left:41vw;
+    width:55vw;
+    height:30vw;
+}
+.content .right-part .pic-box{
+    position:absolute;
+    top:0;
+    width:30vw;
+    height:30vw;
+    background-color:var(--light-pink);
+    border-radius:20px;
+    z-index:2;
+    border:2px dashed var(--violat);
+    overflow:hidden;
+}
+.content .right-part .pic-box img{
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+}
+/* description part */
+.content .right-part .word-box{
+    position:absolute;
+    left:25vw;
+}
+.content .right-part .word-box img{
+    position:absolute;
+    left:0;
+    width:30vw;
+    height:30vw;
+}
+.content .right-part .word-box p{
+    display:inline-block;
+    width:17vw;
+    height:28vw;
+    font-size:1vw;
+    color:white;
+    text-align:left;
+    position:absolute;
+    top:7vh;
+    left:6vw;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sequence search</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="./css/base.css"/>
+    <link rel="stylesheet" href="./css/tool.css"/>
+    <link rel="stylesheet" href="./css/banner.css"/>
+    <link rel="stylesheet" href="./css/search.css"/>
+    <link rel="stylesheet" href="./css/loading.css"/>
+    <link rel="stylesheet" href="./css/success_failure.css"/>
+    <style type="text/css">
+        /* modify the search bar */
+        .content .input-box:first-child{
+            width:5%;
+        }
+
+        .content .input-box:nth-child(2){
+            left:58%;
+            width:35%;
+            top:-10%;
+            
+        }
+        .content .input-box:nth-child(3){
+            left:58%;
+            top:10%;
+            width:35%;
+        }
+        .content .input-box input{
+            left:10%;
+        }
+
+        /* modify the tip */
+        .content .tip{
+            top:30%;
+            left:31%;
+        }
+        
+
+    </style>
+</head>
+<body>
+        <!-- banner -->
+        <header class="banner animate__animated animate__slideInDown">
+            <h2 class="gangalin-font">SEQUENCE SEARCH</h2>
+         </header>
+    
+         <!-- content part -->
+         <section class="content more-sugar-font" id="section-box">
+            <form id="search-form">
+                <div class="input-box">
+                    <span class="iconfont" id="start-btn">&#xe61c;</span>
+                </div>
+                <div class="input-box">
+                    <input class="more-sugar-font" type="text" name="search_species" placeholder="enter the species name" required/>
+                </div>
+                <div class="input-box">
+                    <input class="more-sugar-font" type="text" name="search_protein" placeholder="enter the protein name" required/>
+                </div>
+                <div class="tip" id="tip-outer-box">
+                    <div class="arrow sprite-middle2"></div>
+                    <div class="sprite-left3 word-box" id="tip-box"><p>click the search icon</p><p>to start</p></div>
+                </div>
+            </form>
+         </section>
+    
+         <!-- footer part: return to home page -->
+        <a class="return-home sprite-left5 animate__animated animate__slideInUp" href="/~s2647596/index.html"></a>    
+
+        <script src="./js/search.js" type="module"></script>
+</body>
+</html>

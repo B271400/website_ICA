@@ -1,0 +1,27 @@
+/* basic setups  */
+*{
+    /* remove default style */
+    padding:0;
+    list-style:none;
+    margin:0;
+    border:none;
+    text-decoration:none;
+    
+    /* set some color variable */
+    --light-violat:#e2c9e9;
+    --dark-purple:#532A79;
+    --dark-blue:#302660;
+    --violat:#66497D;
+    --light-pink:#F7F0FF;
+    --blue:#5171ff7a;
+    --pink:#ff66c472;
+}
+body{
+    /* set background color */
+    background-color: #F7F0FF;
+}
+/* remove default color of a tag */
+a{
+    color:inherit;
+    display:inline-block;
+}

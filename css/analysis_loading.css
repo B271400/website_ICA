@@ -1,0 +1,6 @@
+.right-part .pic-box .loading-box{
+    text-align:center;
+    font-size:1.5vw;
+    color:var(--dark-purple);
+    margin-top:5vh;
+}
