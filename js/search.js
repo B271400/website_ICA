@@ -47,7 +47,7 @@ start_btn.addEventListener("click",()=>{
             }else{
                 if(result["uni_id"]){
                     let downloadURL = `/~s2647596/temp/seq_${result["uni_id"]}.fasta`
-                    console.log(downloadURL)
+                    // console.log(downloadURL)
                     //when receive the result
                     section_box.innerHTML=`
                         <div class = "sprite-right2 success-pic"></div>
