@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($return_code == 0){
             //send the json result from python file to js
             $json_str = implode("\n",$output);
-            echo $json_str;
+            echo $json_str;            
             
         }else{
             $response = [
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //return the response
             echo json_encode($response);
         }
-
+        
 
     }else{
         $response = [

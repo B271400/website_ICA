@@ -1,5 +1,6 @@
 <?php
 require_once 'session_init.php';
+require_once 'db_connect.php';
 header("Content-Type: application/json");
 
 // use post method
@@ -19,15 +20,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //check the result
         if($return_code == 0 ){
-            $file_dir = "/home/s2647596/public_html/temp/seq_$uni_id.fasta";
-            if(file_exists($file_dir) && filesize($file_dir)>0){
+            $file_dir = "./results/seq_$uni_id/original_seq.fasta";
+            $abs_file_dir = "/home/s2647596/public_html/results/seq_$uni_id/original_seq.fasta";
+            if(file_exists($abs_file_dir) && filesize($abs_file_dir)>0){
                 // add this uni id to the session
                 $_SESSION["uni_id"] = $uni_id;
-                $response = [
-                            "status" => "success",
-                            "message" => "obtain the sequence",
-                            "uni_id" => $uni_id
+                //save the searching result in database
+                $source_type = "query";
+                try{
+                    $sql = "INSERT INTO Searching (unique_id, file_dir, source_type)
+                            VALUES (:uni_id, :file_dir, :source_type)";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([
+                        ":uni_id" => "seq_$uni_id",
+                        ":file_dir"=>$file_dir,
+                        ":source_type"=>$source_type
+                    ]);
+
+                    $response = [
+                        "status" => "success",
+                        "message" => "obtain the sequence",
+                        "uni_id" => $uni_id
                     ];
+                }catch (PDOException $e){
+                    $response = [
+                        "status" =>"error",
+                        "message" => "sql error".$e
+                    ];
+                }
             }else{
                 $response = [
                     "status" => "error",

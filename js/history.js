@@ -18,7 +18,7 @@ form_el.addEventListener("focus",()=>{
 
 //check the input box content when click on the start button
 start_btn.addEventListener("click",()=>{
-    status = "original"
+    stat = "original"
     if(form_el.seq_id.value){
 
         //change to loading page
@@ -29,7 +29,8 @@ start_btn.addEventListener("click",()=>{
 
         //send the values to the server
         //obtain input data
-        var input_data = new FormData(form_el)
+        var input_data = new FormData()
+        input_data.append("tracking_id",form_el.seq_id.value)
 
         //send data
         fetch(url, {
@@ -45,15 +46,7 @@ start_btn.addEventListener("click",()=>{
             if(data.status=="error"){
                 throw new Error(data.message)
             }else{
-
-                //when receive the result
-                section_box.innerHTML=`
-                    <div class = "sprite-right2 success-pic"></div>
-                    <div class = "success-msg more-sugar-font"><p>Congratulations!</p><p>Target sequence is found!</p><p>now you can:</p></div>
-                    <ul class = "success-choice-list more-sugar-font">
-                        <li class="sprite-left4"><a href="/~s2647596/temp/target_seq.fasta" download><p>download sequence</p><p>FASTA format</p></a></li>
-                        <li class="sprite-left4"><a href="/~s2647596/analysis.html"><p>Further analysis</p></a></li>
-                    </ul>`
+                console.log(data)
             }
 
         }).catch(err=>{

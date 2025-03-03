@@ -54,7 +54,33 @@ const getStat = async (func, el, url) => {
                                                     <a href="${data.zip_src}"  download>download results</a>
                                                     <img src="./imgs/heart_box.png" />
                                                 </li>
+                                                <li class="more-sugar-font zip-download" id="track-box">
+                                                    <p>id: seq_${data.uniq_id}</p>
+                                                    <img src="./imgs/heart_box.png" />
+                                                </li>
                                                 <li class="more-sugar-font"><a href="/~s2647596/analysis.html">return</a></li>` 
+
+                    //send the result to motif_sqlInsert.php, save the data into sql
+                    const formData = new FormData();
+                    formData.append("uni_id", data.uniq_id);
+                    formData.append("motif_list", Object.keys(data.motif_dict).join(";"));  // join motif names, separated by ";"
+                    formData.append("total_seq_num", data.total_seq);
+                    formData.append("motif_seq_num", data.motif_seq);
+                    formData.append("motif_zip_dir", data.zip_src);
+
+                    const response = await fetch("/~s2647596/php/motif_sqlInsert.php", {
+                        method: "POST",
+                        body: formData  
+                    });
+
+                    const responseData = await response.json();
+                    if (!response.ok) {
+                        throw new Error(`Error saving motif data: ${responseData.message}`);
+                    }
+
+                    //tell the user to keep their tracking id
+                    alert(`Important! Here is your tracking ID: seq_${data.uniq_id}, keep it and use it for history track!`)
+                    
                 }
             } else {
                 throw new Error(`http code error: ${response.status}`);
@@ -74,7 +100,7 @@ const getStat = async (func, el, url) => {
                                     <img src="./imgs/heart_box.png" />
                                 </li>
                                 <li class="more-sugar-font"><a href="/~s2647596/analysis.html">return</a></li>`
-        window.location.reload(true)
+        // window.location.reload(true)
     }
 }
 

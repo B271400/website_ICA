@@ -36,7 +36,14 @@ const getStat = async (func, el, url) => {
                                                     <a href="${data.zip_src}"  download>download results</a>
                                                     <img src="./imgs/heart_box.png" />
                                                 </li>
+                                                <li class="more-sugar-font zip-download" id="track-box">
+                                                    <p>id: ${data.tracking_id}</p>
+                                                    <img src="./imgs/heart_box.png" />
+                                                </li>
                                                 <li class="more-sugar-font"><a href="/~s2647596/analysis.html">return</a></li>`
+                    
+                    //tell the user to keep their tracking id
+                    alert(`Important! Here is your tracking ID: ${data.tracking_id}, keep it and use it for history track!`)
                 }
             } else {
                 throw new Error(`http code error: ${response.status}`);

@@ -10,8 +10,8 @@ os.chdir(current_dir)
 
 #the directory for sequence file
 seq_dir = f"./temp"
-
-file_name = f"seq_{sys.argv[1]}"
+uniq_id = sys.argv[1]
+file_name = f"seq_{uniq_id}"
 # file_name = "seq_1"
 
 #create a folder in analysis result for this sequence file
@@ -110,6 +110,7 @@ for acc_id in acc_list:
 total_seq = len(acc_list)
 motif_seq = len(hit_acc_list)
 return_result = {
+    "uniq_id" : uniq_id,
     "total_seq":total_seq,
     "motif_seq":motif_seq,
     "associated_motif":len(motif_dict.keys()),

@@ -46,7 +46,7 @@ start_btn.addEventListener("click",()=>{
                 throw new Error(result.message)
             }else{
                 if(result["uni_id"]){
-                    let downloadURL = `/~s2647596/temp/seq_${result["uni_id"]}.fasta`
+                    let downloadURL = `/~s2647596/results/seq_${result["uni_id"]}/original_seq.fasta`
                     // console.log(downloadURL)
                     //when receive the result
                     section_box.innerHTML=`

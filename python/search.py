@@ -9,13 +9,13 @@ from Bio import SeqIO
 current_dir = "/home/s2647596/public_html"
 os.chdir(current_dir)
 
-Entrez.email = "s2647596@ed.ac.uk"
+Entrez.email = "Jiaxi_Chen_0222@outlook.com"
 
 # obtain the species name and protein name from php 
-species_name = sys.argv[1]
-protein_name = sys.argv[2]
-# species_name = "Aves"
-# protein_name = "glucose-6-phosphatase"
+# species_name = sys.argv[1]
+# protein_name = sys.argv[2]
+species_name = "Aves"
+protein_name = "glucose-6-phosphatase"
 
 #esearch and efetch
 try:
@@ -24,7 +24,7 @@ try:
     # print(idList)
 except:
     #if something wrong, exit from the script
-    print("no_result")
+    print("cannot connect to NCBI")
     sys.exit(1)
 
 #if no result, exit from the script
@@ -35,10 +35,14 @@ else:
     #create a uique id for this file
     unique_id = uuid.uuid4().hex[:8]
 
+    #create a folder for this sequence, allowing later analysis use this folder
+    file_name = f"seq_{unique_id}"
+    os.makedirs(f"./results/{file_name}", exist_ok=True)
+    os.chmod(f"./results/{file_name}", 0o777)
     #open the fasta result file
-    os.system(f"touch ./temp/seq_{unique_id}.fasta")
+    os.system(f"touch ./results/{file_name}/original_seq.fasta")
 
-    f = open(f"./temp/seq_{unique_id}.fasta", mode="a", encoding="utf-8")
+    f = open(f"./results/{file_name}/original_seq.fasta", mode="a", encoding="utf-8")
 
     #esearch and efetch obtain the protein sequence (fasta file)
     for id in idList:
@@ -48,6 +52,6 @@ else:
         f.write(f"{record.seq}\n")
         f.write("\n")
 
-    os.chmod(f"./temp/seq_{unique_id}.fasta", 0o777) 
+    os.chmod(f"./results/{file_name}/original_seq.fasta", 0o777) 
     f.close()
     print(unique_id)
