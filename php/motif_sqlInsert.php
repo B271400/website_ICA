@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
             // check whether this data exists or not 
-            $sql = "SELECT COUNT(*) FROM Conservation WHERE unique_id = :unique_id";
+            $sql = "SELECT COUNT(*) FROM Motif WHERE unique_id = :unique_id";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([':unique_id' => "seq_$uni_id"]);
             $exists = $stmt->fetchColumn();

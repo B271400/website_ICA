@@ -1,5 +1,5 @@
 // Obtain elements
-const previous_seq_el = document.getElementById("previous_seq");
+const previous_seq_el = document.getElementById("start-btn");
 const seq_id_url = "/~s2647596/php/seq_id.php";
 const file_el = document.getElementById("fileUpload")
 const content_el = document.getElementById("content-box")
@@ -59,6 +59,15 @@ const getStat = async (func, el, url) => {
                                                     <img src="./imgs/heart_box.png" />
                                                 </li>
                                                 <li class="more-sugar-font"><a href="/~s2647596/analysis.html">return</a></li>` 
+                    
+                    //obtain the track box and copy the tracking id to clipboard
+                    document.getElementById("track-box").addEventListener("click",function(){
+                        navigator.clipboard.writeText(`seq_${data.uniq_id}`).then(()=>{
+                            alert("tracking id copied")
+                        }).catch(err=>{
+                            alert("copy error" + err)
+                        })
+                    })
 
                     //send the result to motif_sqlInsert.php, save the data into sql
                     const formData = new FormData();
@@ -77,9 +86,6 @@ const getStat = async (func, el, url) => {
                     if (!response.ok) {
                         throw new Error(`Error saving motif data: ${responseData.message}`);
                     }
-
-                    //tell the user to keep their tracking id
-                    alert(`Important! Here is your tracking ID: seq_${data.uniq_id}, keep it and use it for history track!`)
                     
                 }
             } else {
@@ -100,7 +106,7 @@ const getStat = async (func, el, url) => {
                                     <img src="./imgs/heart_box.png" />
                                 </li>
                                 <li class="more-sugar-font"><a href="/~s2647596/analysis.html">return</a></li>`
-        // window.location.reload(true)
+        window.location.reload(true)
     }
 }
 

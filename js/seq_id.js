@@ -1,11 +1,18 @@
 const find_prev_seq = (btn_el, url) => {
+    //obtain user input 
+    const input_el = document.getElementById("track-input")
+    
     // Return a Promise
     return new Promise((resolve, reject) => {
         btn_el.addEventListener("click", async () => {
             try {
                 // Send fetch request
+                //the user input
+                var input_data = new FormData();
+                input_data.append("tracking_id", input_el.value)
                 const response = await fetch(url, {
-                    method: "post"
+                    method: "post",
+                    body:input_data
                 });
 
                 if (!response.ok) {
@@ -21,8 +28,7 @@ const find_prev_seq = (btn_el, url) => {
                     resolve("success");
                 }
             } catch (err) {
-                alert(err);
-                reject("error");
+                reject(err);
             }
         }, true);
     });

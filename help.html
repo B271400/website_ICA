@@ -12,54 +12,71 @@
     <link rel="stylesheet" href="./css/base.css"/>
     <link rel="stylesheet" href="./css/tool.css"/>
     <link rel="stylesheet" href="./css/banner.css"/>
-    <link rel="stylesheet" href="./css/about_help.css"/>
 </head>
 <body>
         <!-- banner -->
-        <header class="banner animate__animated animate__slideInDown">
-            <h2 class="gangalin-font">HELP</h2>
-         </header>
+        <nav class="navbar animate__animated animate__slideInDown">
+            <ul class="nav-list more-sugar-font">
+                <li>
+                    <a href="#search-guide">search-guide</a>
+                </li>
+                <li>
+                    <a href="#">analysis-guide</a>
+                </li>
+                <li>
+                    <a href="#">tracking-guide</a>
+                </li>
+            </ul>
+        </nav>
     
          <!-- content part -->
-         <section class="content">
-            <!-- left part -->
-             <ul class="left-part" id="help-ul">
-                <li data-n="0" id="overview" class="original_box active_box gangalin-font">
-                    <img src="./imgs/active_box.png"/>
-                    <p>WEBSITE OVERVIEW</p>
+          <!-- search guide -->
+         <section class="search-guide" id="search-guide">
+            <h2 class="gangalin-font">HOW TO SEARCH PROTEIN SEQUENCES?</h2>
+            <ul class="more-sugar-font">
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/search1.png" />
+                     <!-- text explanation -->
+                     <div><p>Enter the species name and protein name in the input fields.</p>
+                        <p>Click the search icon to start the search.</p>
+                    </div>
                 </li>
-                <li data-n="1" id="features" class="original_box gangalin-font">
-                    <img  src="./imgs/original_box.png"/>
-                    <p>FEATURES</p>
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/search2.png" />
+                     <!-- text explanation -->
+                     <div>
+                        <p>Important: Both the species name and protein name must be entered</p>
+                        <p>otherwise, the search cannot proceed</p>
+                     </div>
                 </li>
-                <li data-n="2" id="guide" class="original_box gangalin-font">
-                    <img  src="./imgs/original_box.png"/>
-                    <p>STEP-BY-STEP GUIDE</p>
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/search3.png" />
+                     <!-- text explanation -->
+                     <div>
+                        <p>Once the target sequence is found, a tracking ID will be generated .</p>
+                        <p>Keep this tracking ID for future reference—it allows you to revisit your results.</p>
+                        <p>You can ownload the sequence in FASTA format, or proceed with further analysis using the retrieved sequence.</p>
+                     </div>
                 </li>
-             </ul>
-             <!-- right part -->
-              <div class="right-part animate__animated animate__flipInX">
-                <div class="pic-box">
-                    <ul class="pic-inner-box" id="slider-box">
-                        <li><img src="./imgs/pic1.png" /></li>
-                        <li><img src="./imgs/pic2.png" /></li>
-                        <li><img src="./imgs/pic3.png" /></li>
-                    </ul>
-                </div>
-                <div class="word-box more-sugar-font">
-                    <img src="./imgs/word_box.png"/>
-                    <p id="content_box">
-                        introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function introduction of this function 
-                    </p>
-                </div>
-              </div>
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/search4.png" />
+                     <!-- text explanation -->
+                     <div>
+                        <p>If an incorrect species or protein name is entered, the system will not find any matching sequences. </p>
+                        <p>You will need to adjust your input and try again.</p>
+                     </div>
+                </li>
+            </ul>
          </section>
     
          <!-- footer part: return to home page -->
         <a class="return-home sprite-left5 animate__animated animate__slideInUp" href="/~s2647596/index.html"></a>    
 
 
-        <script src="./js/help.js" type="module">
 </script>
 </body>
 </html>

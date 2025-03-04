@@ -51,7 +51,11 @@ start_btn.addEventListener("click",()=>{
                     //when receive the result
                     section_box.innerHTML=`
                         <div class = "sprite-right2 success-pic"></div>
-                        <div class = "success-msg more-sugar-font"><p>Congratulations!</p><p>Target sequence is found!</p><p>now you can:</p></div>
+                        <div class = "success-msg more-sugar-font">
+                            <p>Target sequence is found!</p>
+                            <p>Here is your tracking ID: <span id="id-text">seq_${result["uni_id"]}</span></p>
+                            <p>Keep it for history track/ further analysis</p>
+                            <p>now you can:</p></div>
                         <ul class = "success-choice-list more-sugar-font">
                             <li>
                                 <img src="./imgs/heart_box.png"/>
@@ -62,6 +66,15 @@ start_btn.addEventListener("click",()=>{
                                 <a href="/~s2647596/analysis.html"><p>Further analysis</p></a>
                             </li>
                         </ul>`
+
+                     //obtain the track box and copy the tracking id to clipboard
+                    document.getElementById("id-text").addEventListener("click",function(){
+                        navigator.clipboard.writeText(`seq_${result["uni_id"]}`).then(()=>{
+                            alert("tracking id copied")
+                        }).catch(err=>{
+                            alert("copy error" + err)
+                        })
+                    })   
                 }
             }
 

@@ -1,4 +1,24 @@
 /* the css style layout of index page */
+/* animation */
+@keyframes sideMove {
+    from{
+        transform:translateX(3px);
+    }
+    to{
+        transform:translateX(-3px);
+    }
+}
+@keyframes scaleMove {
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+    100%{
+        transform:scale(1)
+    }
+}
 /* the navbar part */
 .navbar{
     width:100vw;
@@ -147,7 +167,7 @@
 /* left part */
 .example-display .left-part{
     width:40%;
-    height:40vw;
+    height:70%;
     position:absolute;
     left:8vw;
     top:20vh;
@@ -163,24 +183,36 @@
 .example-display .left-part div{
     width:100%;
     height:40%;
-    margin:5vw 0;
+    margin:3vw 0;
     font-size:1.5vw;
 }
 /* button */
-.example-display .left-part a{
+.example-display .left-part div.btn{
+    width:100%;
+    color:var(--light-pink);
+    height:7vh !important;
+    font-size:1.4vw;
+    display:relative;
+}
+.example-display .left-part div.btn .btn-text{
     position:absolute;
-    top:75%;
-    width:10vw;
-    height:4vw;
+    width:16vw;
+    height:7vh;
     background-color: var(--violat);
     border-radius: 10px;
     text-align:center;
-    line-height: 4vw;
-    margin:auto 0;
-    color:var(--light-pink);
-    font-size:2vw;
+    line-height:7vh;
     left:50%;
-    margin-left:-5vw;
+    margin-left:-8vw;
+    
+}
+.example-display .left-part div.btn p.btn-text{
+    width:25vw;
+    margin-left:-12.5vw;
+}
+.example-display .left-part div.btn .btn-text:hover{
+    animation: scaleMove 0.5s ease-in-out infinite alternate;
+    cursor: pointer;
 }
 /* right picture part */
 .example-display .right-part{
@@ -199,6 +231,11 @@
     position:absolute;
     bottom:0;
     left:-8%;
+}
+.example-display .right-part video{
+    width:100%;
+    position:absolute;
+    top:10px;
 }
 
 /* footer part */
@@ -230,14 +267,7 @@
     text-align:center;
     line-height: 55px;
 }
-@keyframes sideMove {
-    from{
-        transform:translateX(3px);
-    }
-    to{
-        transform:translateX(-3px);
-    }
-}
+
 .footer .left-part li:hover{
     cursor:pointer;
     animation:sideMove 0.3s ease infinite alternate;

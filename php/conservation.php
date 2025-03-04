@@ -6,64 +6,75 @@ header("Content-Type: application/json");
 // use post method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_SESSION["uni_id"])){
-        //send unique id to python file
+        //save the uni id
         $uni_id = $_SESSION["uni_id"];
-        $python_command = "python3 ../python/conservation.py $uni_id";
-        exec($python_command, $output, $return_code);
-        $output = implode($output);
 
-        //check the result
-        if($return_code == 0){
-            $plot_src = "./results/seq_$uni_id/plotcon.1.png";
-            $zip_src = "./results/seq_$uni_id/conservation.zip";
-
-            try {
-                // check whether this data exists or not 
-                $sql = "SELECT COUNT(*) FROM Conservation WHERE unique_id = :unique_id";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([':unique_id' => "seq_$uni_id"]);
-                $exists = $stmt->fetchColumn();
-            
-                if ($exists) {
-                    // if this data exists (user search for it before): update the result, rather than insert it
-                    $sql = "UPDATE Conservation SET conservation_plot = :conservation_plot, conservation_zip_dir = :conservation_zip_dir 
-                            WHERE unique_id = :unique_id";
-                } else {
-                    // if this data not exists, insert the data
-                    $sql = "INSERT INTO Conservation (unique_id, conservation_plot, conservation_zip_dir) 
-                            VALUES (:unique_id, :conservation_plot, :conservation_zip_dir)";
-                }
-            
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([
-                    ':unique_id' => "seq_$uni_id",
-                    ':conservation_plot' => $plot_src,
-                    ':conservation_zip_dir' => $zip_src
-                ]);
-            
+        //check whether this data exists or not
+        try {
+            // check whether this data exists or not 
+            $sql = "SELECT*FROM Conservation WHERE unique_id = :unique_id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':unique_id' => "seq_$uni_id"]);
+            $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            if (count($searchResult) > 0) {
+                // if this data exists (user search for it before)
+                //return the resposne directly
                 $response = [
                     "status" => "success",
                     "message" => "generate the conservation plot",
-                    "plot_src" => $plot_src,
-                    "zip_src" => $zip_src,
+                    "plot_src" => $searchResult["conservation_plot"],
+                    "zip_src" => $searchResult["conservation_zip_dir"],
                     "tracking_id" => "seq_$uni_id"
                 ];
-            } catch (PDOException $e) {
-                $response = [
-                    "status" =>"error",
-                    "message" => "sql error: $e"
-                ];
-            }   
-            
-        }else{
-            $response = [
-                "status" => "error",
-                "message" => "python script error",
-                "output" => $output,
-                "return code"=>$return_code
-            ];
-        }
 
+            } else {
+                //if this data not exists, obtain the results from python script
+                $python_command = "python3 ../python/conservation.py $uni_id";
+                exec($python_command, $output, $return_code);
+                $output = implode($output);
+
+                 //check the result from python
+                if($return_code == 0){
+                    $plot_src = "./results/seq_$uni_id/plotcon.1.png";
+                    $zip_src = "./results/seq_$uni_id/conservation.zip";
+
+                    // if this data not exists, insert the data
+                    $sql = "INSERT INTO Conservation (unique_id, conservation_plot, conservation_zip_dir) 
+                            VALUES (:unique_id, :conservation_plot, :conservation_zip_dir)";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([
+                        ':unique_id' => "seq_$uni_id",
+                        ':conservation_plot' => $plot_src,
+                        ':conservation_zip_dir' => $zip_src
+                    ]);
+                
+                    //return the result
+                    $response = [
+                        "status" => "success",
+                        "message" => "generate the conservation plot",
+                        "plot_src" => $plot_src,
+                        "zip_src" => $zip_src,
+                        "tracking_id" => "seq_$uni_id"
+                    ];
+                    
+                }else{
+                    $response = [
+                        "status" => "error",
+                        "message" => "python script error",
+                        "output" => $output,
+                        "return code"=>$return_code
+                    ];
+                }
+                
+            }
+        
+        } catch (PDOException $e) {
+            $response = [
+                "status" =>"error",
+                "message" => "sql error: $e"
+            ];
+        }   
 
     }else{
         $response = [

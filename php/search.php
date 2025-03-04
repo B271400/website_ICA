@@ -1,5 +1,4 @@
 <?php
-require_once 'session_init.php';
 require_once 'db_connect.php';
 header("Content-Type: application/json");
 
@@ -23,8 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $file_dir = "./results/seq_$uni_id/original_seq.fasta";
             $abs_file_dir = "/home/s2647596/public_html/results/seq_$uni_id/original_seq.fasta";
             if(file_exists($abs_file_dir) && filesize($abs_file_dir)>0){
-                // add this uni id to the session
-                $_SESSION["uni_id"] = $uni_id;
                 //save the searching result in database
                 $source_type = "query";
                 try{

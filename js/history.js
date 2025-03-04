@@ -46,7 +46,133 @@ start_btn.addEventListener("click",()=>{
             if(data.status=="error"){
                 throw new Error(data.message)
             }else{
-                console.log(data)
+                section_box.innerHTML = `<div class="result-id">tracking id: ${data.search_result[0].unique_id}</div>
+                                        <div class="seq-download">
+                                            <a href="${data.search_result[0].file_dir}" download>sequence download</a>
+                                        </div>`
+                if(data.analysis_type == "has_analysis"){
+                    //table header
+                    section_box.innerHTML += `<table class="result-table more-sugar-font">
+                                                    <thead class="gangalin-font">
+                                                        <tr>
+                                                            <th>
+                                                                <div>
+                                                                    <img src="./imgs/heart.png" />
+                                                                    <p>analysis type</p>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div>
+                                                                    <img src="./imgs/heart.png" />
+                                                                    <p>result download</p>
+                                                                </div>
+                                                            </th>
+                                                            <th>
+                                                                <div>
+                                                                    <img src="./imgs/heart.png" />
+                                                                    <p>extra information</p>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table-body"></tbody></table>`
+                    //obtain tbody to add content
+                    let tableBody = document.getElementById("table-body")
+                    tableBody.innerHTML = ""
+
+                    //add motif result
+                    if (Array.isArray(data.motif_result) && data.motif_result.length > 0) {
+                        //save the motif names in a lise
+                        const motif_list = (data.motif_result[0].motif_list).split(";")
+
+                        let motif_html = `<tr>
+                                                <td class="analysis_type">
+                                                    <p>Motif search</p>
+                                                </td>
+                                                <td class="result-download">
+                                                    <div>
+                                                        <a href="${data.motif_result[0].motif_zip_dir}" download>result_link</a>
+                                                        <img src="./imgs/heart_box.png" />
+                                                    </div>
+                                                </td>
+                                                <td class="extra-info" id="extra-info-box">
+                                                    <div class="motif-result">
+                                                        <p>Total sequence: ${data.motif_result[0].total_seq_num}</p>
+                                                        <p>sequence with motif: ${data.motif_result[0].motif_seq_num}</p>
+                                                        <p>****************************</p>
+                                                        <p>motif found: </p>`
+
+                        for(let motif_name of motif_list){
+                            motif_html += `<p>${motif_name}</p>`
+                        }
+                        motif_html += `</div></td></tr>`
+
+                        tableBody.innerHTML += motif_html
+
+                    }
+
+                    //add conservation result
+                    if (Array.isArray(data.conservation_result) && data.conservation_result.length > 0) {
+                        let conservation_html = `<tr>
+                                                    <td class="analysis_type">
+                                                        <p>conservation plot</p>
+                                                    </td>
+                                                    <td class="result-download">
+                                                        <div>
+                                                            <a href="${data.conservation_result[0].conservation_zip_dir}" download>result_link</a>
+                                                            <img src="./imgs/heart_box.png" />
+                                                        </div>
+                                                    </td>
+                                                    <td class="extra-info" id="extra-info-box">
+                                                        <div class="conservation-result">
+                                                            <img src="${data.conservation_result[0].conservation_plot}" />
+                                                        </div>
+                                                    </td>
+                                                </tr>`
+                        tableBody.innerHTML += conservation_html
+                    }
+
+                    //add tree result
+                    if (Array.isArray(data.tree_result) && data.tree_result.length > 0) {
+                        let tree_html = `<tr>
+                                            <td class="analysis_type">
+                                                <p>phylogenetic tree</p>
+                                            </td>
+                                            <td class="result-download">
+                                                <div>
+                                                    <a href="${data.tree_result[0].tree_zip_dir}" download>result_link</a>
+                                                    <img src="./imgs/heart_box.png" />
+                                                </div>
+                                            </td>
+                                            <td class="extra-info" id="extra-info-box">
+                                                <div class="tree-result more-sugar-font">
+                                                    <div class="result-download">
+                                                        <img src="./imgs/download_box.png" />
+                                                        <a href="${data.tree_result[0].tree_file}" download>
+                                                            <p>download Newick-format tree data</p>
+                                                            <p>use it to visualise phylogeny on iTOL</p>
+                                                        </a>
+                                                    </div>
+                                                    <a class="result-upload" href="https://itol.embl.de/upload.cgi" target="_blank">link to iTOL</a>
+                                                </div>
+                                            </td>
+                                        </tr>`
+                        tableBody.innerHTML += tree_html
+                    }
+
+                }else{
+                    //only sequence records, no analysis records
+                    section_box.innerHTML += `<div class="no-analysis-tip">
+                                                <p>no analysis records!</p>
+                                                <p>you can download your sequence or try further analysis!</p>
+                                                <div>
+                                                    <img src="./imgs/heart_box.png" />
+                                                    <a href="/~s2647596/analysis.html">further analysis</a>
+                                                </div>
+                                            </div>`
+
+                }
+
             }
 
         }).catch(err=>{

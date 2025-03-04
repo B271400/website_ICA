@@ -12,10 +12,10 @@ os.chdir(current_dir)
 Entrez.email = "Jiaxi_Chen_0222@outlook.com"
 
 # obtain the species name and protein name from php 
-# species_name = sys.argv[1]
-# protein_name = sys.argv[2]
-species_name = "Aves"
-protein_name = "glucose-6-phosphatase"
+species_name = sys.argv[1]
+protein_name = sys.argv[2]
+# species_name = "Aves"
+# protein_name = "glucose-6-phosphatase"
 
 #esearch and efetch
 try:
