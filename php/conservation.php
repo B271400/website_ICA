@@ -15,16 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "SELECT*FROM Conservation WHERE unique_id = :unique_id";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([':unique_id' => "seq_$uni_id"]);
-            $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+            $searchResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
             if (count($searchResult) > 0) {
                 // if this data exists (user search for it before)
+                $firstResult = $searchResult[0];
                 //return the resposne directly
                 $response = [
                     "status" => "success",
                     "message" => "generate the conservation plot",
-                    "plot_src" => $searchResult["conservation_plot"],
-                    "zip_src" => $searchResult["conservation_zip_dir"],
+                    "plot_src" => $firstResult["conservation_plot"],
+                    "zip_src" => $firstResult["conservation_zip_dir"],
                     "tracking_id" => "seq_$uni_id"
                 ];
 

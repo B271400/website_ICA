@@ -12,26 +12,27 @@
     <link rel="stylesheet" href="./css/base.css"/>
     <link rel="stylesheet" href="./css/tool.css"/>
     <link rel="stylesheet" href="./css/banner.css"/>
+    <link rel="stylesheet" href="./css/help.css"/>
 </head>
 <body>
         <!-- banner -->
         <nav class="navbar animate__animated animate__slideInDown">
-            <ul class="nav-list more-sugar-font">
-                <li>
-                    <a href="#search-guide">search-guide</a>
+            <ul class="nav-list more-sugar-font" id="banner-ul">
+                <li >
+                    <a class="current-li" href="#search-guide">search-guide</a>
                 </li>
                 <li>
-                    <a href="#">analysis-guide</a>
+                    <a href="#analysis-guide">analysis-guide</a>
                 </li>
                 <li>
-                    <a href="#">tracking-guide</a>
+                    <a href="#tracking-guide">tracking-guide</a>
                 </li>
             </ul>
         </nav>
     
          <!-- content part -->
           <!-- search guide -->
-         <section class="search-guide" id="search-guide">
+         <section class="guide" id="search-guide">
             <h2 class="gangalin-font">HOW TO SEARCH PROTEIN SEQUENCES?</h2>
             <ul class="more-sugar-font">
                 <li>
@@ -47,7 +48,7 @@
                      <img src="./imgs/help_page/search2.png" />
                      <!-- text explanation -->
                      <div>
-                        <p>Important: Both the species name and protein name must be entered</p>
+                        <p>Important: </p><p>Both the species name and protein name must be entered</p>
                         <p>otherwise, the search cannot proceed</p>
                      </div>
                 </li>
@@ -55,7 +56,7 @@
                     <!-- picture part -->
                      <img src="./imgs/help_page/search3.png" />
                      <!-- text explanation -->
-                     <div>
+                     <div class="long-text">
                         <p>Once the target sequence is found, a tracking ID will be generated .</p>
                         <p>Keep this tracking ID for future reference—it allows you to revisit your results.</p>
                         <p>You can ownload the sequence in FASTA format, or proceed with further analysis using the retrieved sequence.</p>
@@ -72,11 +73,125 @@
                 </li>
             </ul>
          </section>
+
+         <!-- analysis section -->
+         <section class = "guide analysis-guide" id="analysis-guide">
+            <h2 class="gangalin-font">HOW TO PERFORM SEQUENCE ANALYSIS?</h2>
+            <ol class="more-sugar-font">
+                <li>
+                    <!-- picture part -->
+                    <img src="./imgs/help_page/analysis5.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>There are three types of analyses available:</p>
+                        <p>Conservation Analysis: Evaluates evolutionary conservation among sequences.</p>
+                        <p>Motif Search: Identifies known motifs within the sequences using the PROSITE database.
+                        <p>Phylogenetic Tree Construction: Reconstructs evolutionary relationships using IQ-TREE.</p>
+                     </div>
+                </li>
+                <li>
+                    <!-- picture part -->
+                    <img src="./imgs/help_page/analysis6.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>How to Start an Analysis:</p>
+                        <p>Upload your own sequence file (must be in FASTA format, the system will validate the file).</p>
+                        <p>Alternatively, enter a tracking ID from a previous search and click the search icon to start the analysis.</p>
+                     </div>
+                </li>
+                <li>
+                    <!-- picture part -->
+                    <img src="./imgs/help_page/analysis1.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>Once the analysis is complete, you can download the results as a ZIP file and copy the tracking ID by clicking id button.</p>
+                        <p>If an error occurs during the analysis, an alert will be shown, and you will need to reload the page to retry</p>
+                     </div>
+                </li>
+            </ol>
+            
+            <ul class="more-sugar-font">
+                <li>
+                    <!-- picture part -->
+                    <img src="./imgs/help_page/analysis2.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>extra-information of conservation analysis:</p>
+                        <p>The system will display the conservation plot, showing functionally important sequence regions</p>
+                     </div>
+                </li>
+                <li>
+                    <!-- picture part -->
+                    <img src="./imgs/help_page/analysis3.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>extra-information of motif analysis:</p>
+                        <p>The motif analysis results will indicate the number of sequences containing known motifs and their names</p>
+                     </div>
+                </li>
+                <li>
+                    <!-- picture part -->
+                    <img src="./imgs/help_page/analysis4.png"/>
+                    <!-- text part -->
+                     <div class="long-text">
+                        <p>How to visualise phylogenetic tree:</p>
+                        <p>1. The generated Newick-format tree file can be downloaded.</p>
+                        <p>2. Click the "cat" button to download the tree file.</p>
+                        <p>3. Use the iTOL (Interactive Tree of Life) website to visualise and explore the phylogenetic tree.</p>
+                     </div>
+                </li>
+            </ul>
+         </section>
+
+         <!-- tracking guide -->
+          <section class="guide tracking-guide" id="tracking-guide">
+            <h2 class="gangalin-font">HOW TO TRACK PREVIOUS SEARCH?</h2>
+            <ul class="more-sugar-font">
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/history1.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>If you have a tracking ID (unique id start with seq_)</p>
+                        <p>enter it in the search bar and click the search icon to retrieve previous results</p>
+                     </div>
+                </li>
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/history2.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>If the tracking ID is not found,</p>
+                        <p>The system will prompt you to enter a valid ID</p>
+                     </div>
+                </li>
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/history3.png"/>
+                    <!-- text part -->
+                     <div >
+                        <p>if no analysis was performed</p>
+                        <p>The system will display the original sequence file</p>
+                        <p>allowing you to download it or proceed with further analysis</p>
+                     </div>
+                </li>
+                <li>
+                    <!-- picture part -->
+                     <img src="./imgs/help_page/history4.png"/>
+                    <!-- text part -->
+                     <div>
+                        <p>If you have performed any of the three analyses,</p>
+                        <p>your original sequence file will be displated alongside the analysis resutls</p>
+                        <p>The results can be downloaded as a ZIP file (click "result_link" button) for further examination</p>
+                        <p>Additional information will be provided.</p>
+                     </div>
+                </li>
+            </ul>
+          </section>
     
          <!-- footer part: return to home page -->
         <a class="return-home sprite-left5 animate__animated animate__slideInUp" href="/~s2647596/index.html"></a>    
 
-
-</script>
+        <script src="./js/help.js" type="module"></script>
 </body>
 </html>

@@ -14,15 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "SELECT*FROM Tree WHERE unique_id = :unique_id";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([':unique_id' => "seq_$uni_id"]);
-            $searchResult = $stmt->fetch(PDO::FETCH_ASSOC);
+            $searchResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
             if (count($searchResult) > 0) {
                 // if this data exists (user search for it before)
+                $firstResult = $searchResult[0];
                  //return the response directly
                  $response = [
                     "status" => "success",
-                    "tree_data_src" => $searchResult["tree_file"] ,
-                    "zip_src" => $searchResult["tree_zip_dir"],
+                    "tree_data_src" => $firstResult["tree_file"] ,
+                    "zip_src" => $firstResult["tree_zip_dir"],
                     "tracking_id" =>"seq_$uni_id"
                 ];
 
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // if this data not exists, insert the data
                     $sql = "INSERT INTO Tree (unique_id, tree_file, tree_zip_dir) 
                     VALUES (:unique_id, :tree_file, :tree_zip_dir)";
-
+                    $stmt = $pdo->prepare($sql);
                     $stmt->execute([
                         ':unique_id' => "seq_$uni_id",
                         ':tree_file' => $tree_file,
