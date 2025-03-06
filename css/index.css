@@ -286,6 +286,9 @@
     top:15%;
     font-size:3vw;
 }
+.footer .left-part li:nth-child(2) p{
+    left:25%;
+}
 .footer .left-part li.original_box{
     color:var(--dark-purple)
 }

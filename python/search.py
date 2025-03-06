@@ -9,7 +9,7 @@ from Bio import SeqIO
 current_dir = "/home/s2647596/public_html"
 os.chdir(current_dir)
 
-Entrez.email = "Jiaxi_Chen_0222@outlook.com"
+Entrez.email = "s2647596@ed.ac.uk"
 
 # obtain the species name and protein name from php 
 species_name = sys.argv[1]
@@ -17,15 +17,37 @@ protein_name = sys.argv[2]
 # species_name = "Aves"
 # protein_name = "glucose-6-phosphatase"
 
-#esearch and efetch
-try:
-    result = Entrez.read(Entrez.esearch(db="protein",term=f"{protein_name}[Title] AND {species_name}[Organism]"))
-    idList = result["IdList"]
-    # print(idList)
-except:
-    #if something wrong, exit from the script
-    print("cannot connect to NCBI")
-    sys.exit(1)
+# try to get taxonomy id first
+def get_taxonomy_id(taxon_name):
+    record = Entrez.read(Entrez.esearch(db="taxonomy", term=taxon_name))
+    if record['IdList']:
+        return record['IdList'][0]
+    else:
+        return None
+txid = get_taxonomy_id(species_name)
+
+if(txid):
+    # use the taxonomy id to search first
+    try:
+        result = Entrez.read(Entrez.esearch(db="protein",term=f"{protein_name}[Title] AND txid{txid}[Organism]"))
+        idList = result["IdList"]
+        # print(idList)
+    except:
+        #if something wrong, exit from the script
+        print("cannot connect to NCBI")
+        sys.exit(2)
+else:
+    #esearch and efetch
+    #try to use the species name directly
+    try:
+        result = Entrez.read(Entrez.esearch(db="protein",term=f"{protein_name}[Title] AND {species_name}[Organism]"))
+        idList = result["IdList"]
+        # print(idList)
+    except:
+        #if something wrong, exit from the script
+        print("cannot connect to NCBI")
+        sys.exit(2)
+    
 
 #if no result, exit from the script
 if not idList:
