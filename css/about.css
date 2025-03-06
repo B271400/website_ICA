@@ -93,4 +93,16 @@
 .content div p{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2vw;
+    text-align: justify;
+    margin-bottom:2vh;
+    line-height:110%;
+}
+.content div h3{
+    font-size:1.5vw;
+    margin-bottom:2vh;
+    color:var(--violat)
+}
+.content div p a{
+    color:var(--violat);
+    text-decoration: underline;
 }
