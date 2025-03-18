@@ -11,7 +11,7 @@ const footer_ul = document.getElementById("footer-ul")
 const footer_content_obj = {
     "help":"This page is designed to provide a clear and user-friendly guide on how to use the key functionalities of this website. Whether you are a biologist looking to analyze protein sequences or a researcher exploring motif patterns, this guide will walk you through the features step by step.",
     "about":`This page provides covers key aspects of the website, including its objectives, technology stack, system architecture (database design), core functionalities, and user experience considerations. Additionally, this page provides a Statement of Credits, detailing the sources of external code used in the project and the role of AI-assisted tools in the development process. `,
-    "contact":`<p>GitHub link: <a href="https://github.com/B271400/website_ICA">https://github.com/B271400/website_ICA</a></p><p>email: sxxxxxx@ed.ac.uk</p><p>telephone: +44 07xxxxxxxxx</p><p>company address: University of Edxxxxx</p><p>faculty: School of Biological Science</p><p>Available Hours: Monday - Friday, 9 AM - 5 PM (GMT)<p><p>Response Time: Typically within 24-48 hours</p>`
+    "contact":`<p>GitHub link: <a target="_blank" href="https://github.com/B271400/website_ICA">https://github.com/B271400/website_ICA</a></p><p>email: sxxxxxx@ed.ac.uk</p><p>telephone: +44 07xxxxxxxxx</p><p>company address: University of Edxxxxx</p><p>faculty: School of Biological Science</p><p>Available Hours: Monday - Friday, 9 AM - 5 PM (GMT)<p><p>Response Time: Typically within 24-48 hours</p>`
 }
 
 contentChange(footer_ul, content_el, footer_content_obj)
