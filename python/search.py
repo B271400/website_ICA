@@ -9,7 +9,8 @@ from Bio import SeqIO
 current_dir = "/home/s2647596/public_html"
 os.chdir(current_dir)
 
-Entrez.email = "s2647596@ed.ac.uk"
+Entrez.email = "xi18516833060@gmail.com"
+Entrez.api_key = "c4e0330618c7f3295d5c8f561aa06dd7fd08"
 
 # obtain the species name and protein name from php 
 species_name = sys.argv[1]
